@@ -46,9 +46,6 @@ const SignIn = () => {
                     </div>
                 </form>
             </div>
-            <div className="text-sm text-center mt-4">
-                🛠 Customize this page at <span className="inlineCode">/pages/auth/signin.tsx</span>
-            </div>
         </div>
     </div>
 
