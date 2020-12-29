@@ -1,9 +1,11 @@
 import {ReactElement, useContext, useEffect} from "react";
 import SessionContext from "../../util/SessionContext";
-import Button from "../forms/Button";
+
 import {useRouter} from "next/router";
 import fb from "../../util/firebase-config";
 import Head from "next/head";
+import {Button} from "@material-ui/core";
+import { useTheme, createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
 
 interface Props {
     children: ReactElement;
@@ -22,6 +24,21 @@ const RedirectHome = () => {
 
     return <></>
 }
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            500: '#8B5CF6',
+
+        }
+    },
+    typography: {
+        button: {
+            textTransform: 'none',
+            flex: 'none'
+        }
+    }
+})
 
 const PageLayout: React.FC<Props> = ({children, privateRoute, title, redirectPath}) => {
 
@@ -43,20 +60,23 @@ const PageLayout: React.FC<Props> = ({children, privateRoute, title, redirectPat
             </title>
         </Head>
         <div className="fixed w-full">
-            <div className="h-1 bg-gradient-to-r from-teal-400 to-blue-600"/>
+            <div className="h-1 bg-gradient-to-r from-purple-400 to-purple-600"/>
             <div className="flex justify-between py-2.5 px-4 shadow-md items-center bg-white">
                 <a href="/"
                    className="flex justify-between items-center font-medium text-lg focus:underline truncate">
                     Hollar
                 </a>
+                <ThemeProvider theme={theme}>
                 <div className="items-center">
-                    {isAuthenticated ? <Button sizes="md" variant="filled" onClick={signOut}>Sign out</Button> :
-                        <span className="space-x-2">
-                    <Button onClick={() => router.push('/auth/signin')} sizes="md" variant="light">Log in</Button>
-                    <Button onClick={() => router.push('/auth/signup')} sizes="md" variant="filled">Sign up</Button>
-                </span>}
+                    {isAuthenticated
+                    ?
+                        <Button color="primary" onClick={signOut}>Sign out</Button>
+                    : <span className="space-x-2">
+                        <Button onClick={() => router.push('/auth/signin')} color="primary" variant="outlined" disableElevation>Log in</Button>
+                        <Button onClick={() => router.push('/auth/signup')} color="primary" variant="contained" disableElevation>Sign up</Button>
+                    </span>}
                 </div>
-
+                </ThemeProvider>
             </div>
         </div>
 
