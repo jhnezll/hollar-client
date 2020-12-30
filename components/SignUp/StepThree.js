@@ -23,10 +23,6 @@ const StepThree = ({currentStep, onContinue, onBack, formData, setFormData}) => 
         console.log(formData)
     }
 
-    function handleChange() {
-        console.log(formData)
-    }
-
     return(
         <MuiThemeProvider theme={Theme}>
             <form onSubmit={quickFix}>
@@ -34,11 +30,11 @@ const StepThree = ({currentStep, onContinue, onBack, formData, setFormData}) => 
 
                     <div className="flex justify-between space-x-2">
                         {/*First Name*/}
-                        <TextField variant="outlined" label="First Name" id="first-name" onChange={event => setFormData({
+                        <TextField className="w-full" variant="outlined" label="First Name" id="first-name" onChange={event => setFormData({
                             ...formData,
                             firstName: event.target.value
                         })} value={formData.firstName} required type="text"/>
-                        <TextField variant="outlined" label="Last Name" id="last-name" onChange={event => setFormData({
+                        <TextField className="w-full" variant="outlined" label="Last Name" id="last-name" onChange={event => setFormData({
                             ...formData,
                             lastName: event.target.value
                         })} value={formData.lastName} required type="text"/>
@@ -53,6 +49,7 @@ const StepThree = ({currentStep, onContinue, onBack, formData, setFormData}) => 
                             {/*})} value={formData.age} required type="number"/>*/}
 
                             <KeyboardDatePicker
+                                className="w-full"
                                 disableToolbar
                                 variant="outline"
                                 format="MM/dd/yyyy"
@@ -64,9 +61,7 @@ const StepThree = ({currentStep, onContinue, onBack, formData, setFormData}) => 
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
-                                inputVariant="outlined"
-                            />
-
+                                inputVariant="outlined"/>
                         </MuiPickersUtilsProvider>
 
 
@@ -81,6 +76,7 @@ const StepThree = ({currentStep, onContinue, onBack, formData, setFormData}) => 
                         {/*             })} required/>*/}
 
                         <Select
+                            className="w-full"
                             labelId="select-label"
                             id="select"
                             value={formData.gender}
