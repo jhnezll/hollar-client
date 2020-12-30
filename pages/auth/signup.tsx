@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import StepOne from "../../components/SignUp/StepOne";
 import StepTwo from "../../components/SignUp/StepTwo";
 import StepThree from "../../components/SignUp/StepThree";
-import StepFinal from "../../components/SignUp/StepFinal";
+import StepCreateAccount from "../../components/SignUp/StepCreateAccount";
+import StepSendToDatabase from "../../components/SignUp/StepSendToDatabase";
 import {useRouter} from "next/router";
 
 
@@ -14,8 +15,8 @@ export default function SignUp() {
         confirmPassword: '',
         firstName: '',
         lastName: '',
-        dateOfBirth: new Date('2020-01-01'),
-        gender: '',
+        // gender: '',
+        // dateOfBirth: new Date('2020-01-01'),
     })
 
     const onContinue = (event) => {
@@ -62,17 +63,29 @@ export default function SignUp() {
                 onBack={() => setCurrentStepIndex(1)}
             />
         },
-        // Final Step
+        // Step 4, Create Account
         {
             title: "",
-            content: <StepFinal
+            content: <StepCreateAccount
                 currentStep={currentStepIndex}
                 onContinue={onContinue}
                 formData={formData}
                 setFormData={setFormData}
                 onBack={() => setCurrentStepIndex(2)}
             />
-        }
+        },
+        // Step 5, Send account data to database
+        {
+            title: "",
+            content: <StepSendToDatabase
+                currentStep={currentStepIndex}
+                onContinue={onContinue}
+                formData={formData}
+                setFormData={setFormData}
+                onBack={() => setCurrentStepIndex(2)}
+            />
+        },
+
     ]
 
     const currentStep = steps[currentStepIndex]
