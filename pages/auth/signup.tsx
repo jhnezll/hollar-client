@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import StepOne from "../../components/SignUp/StepOne";
 import StepTwo from "../../components/SignUp/StepTwo";
 import StepThree from "../../components/SignUp/StepThree";
+import StepFinal from "../../components/SignUp/StepFinal";
 import {useRouter} from "next/router";
 
 
@@ -59,6 +60,17 @@ export default function SignUp() {
                 formData={formData}
                 setFormData={setFormData}
                 onBack={() => setCurrentStepIndex(1)}
+            />
+        },
+        // Final Step
+        {
+            title: "",
+            content: <StepFinal
+                currentStep={currentStepIndex}
+                onContinue={onContinue}
+                formData={formData}
+                setFormData={setFormData}
+                onBack={() => setCurrentStepIndex(2)}
             />
         }
     ]
