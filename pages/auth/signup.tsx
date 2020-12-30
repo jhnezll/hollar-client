@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import StepOne from "../../components/SignUp/StepOne"
+import StepOne from "../../components/SignUp/StepOne";
 import StepTwo from "../../components/SignUp/StepTwo";
+import StepThree from "../../components/SignUp/StepThree";
 import {useRouter} from "next/router";
 
 
@@ -10,8 +11,9 @@ export default function SignUp() {
         email: '',
         password: '',
         confirmPassword: '',
-        username: '',
-        age: '',
+        firstName: '',
+        lastName: '',
+        dateOfBirth: new Date('2020-01-01'),
         gender: '',
     })
 
@@ -39,7 +41,7 @@ export default function SignUp() {
         },
         // Step 2
         {
-            title: "Create Account ✌️",
+            title: "Create Account",
             content: <StepTwo
                 currentStep={currentStepIndex}
                 onContinue={onContinue}
@@ -48,16 +50,17 @@ export default function SignUp() {
                 onBack={() => setCurrentStepIndex(0)}
             />
         },
-        // {
-        //     title: "Review 👀",
-        //     content: <StepThree
-        //         currentStep={currentStepIndex}
-        //         onContinue={onContinue}
-        //         formData={formData}
-        //         setFormData={setFormData}
-        //         onBack={() => setCurrentStepIndex(1)}
-        //     />
-        // }
+        // Step 3
+        {
+            title: "Setup Profile",
+            content: <StepThree
+                currentStep={currentStepIndex}
+                onContinue={onContinue}
+                formData={formData}
+                setFormData={setFormData}
+                onBack={() => setCurrentStepIndex(1)}
+            />
+        }
     ]
 
     const currentStep = steps[currentStepIndex]
