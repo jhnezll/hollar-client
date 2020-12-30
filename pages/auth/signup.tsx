@@ -52,7 +52,7 @@ export default function SignUp() {
         },
         // Step 3
         {
-            title: "Setup Profile",
+            title: "Personal Info",
             content: <StepThree
                 currentStep={currentStepIndex}
                 onContinue={onContinue}
