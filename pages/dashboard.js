@@ -5,49 +5,37 @@ import fb from "../util/firebase-config";
 import BusinessCard from "../components/BusinessCard";
 import {Typography} from "@material-ui/core";
 
-export default function Dashboard() {
-    const {userProfile} = useContext(SessionContext)
-    const [data, setData] = useState({
-        firstName: ''
-    })
+function useAccounts() {
+    const [accounts, setAccounts] = useState([])
 
     useEffect(() => {
-
-        fb.firestore().collection("users-customers").doc(userProfile.uid).get()
-            .then(function(doc) {
-                if (doc.exists) {
-                    const data = doc.data()
-                    setData({
-                        firstName: data.firstName
-                    })
-                } else {
-                    setData({
-                        firstName: "NO FIRST NAME"
-                    })
-                }
-            })
+        fb.firestore().collection("users-businesses").onSnapshot((snapshot => {
+            const newAccounts = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))
+            setAccounts(newAccounts)
+        }))
     }, [])
+
+    return accounts
+}
+
+
+export default function Dashboard() {
+    const {userProfile} = useContext(SessionContext)
+    const accounts = useAccounts()
 
     return(
         <PageLayout title="Dashboard">
             <div className="h-screen flex justify-center items-center px-12 bg-gray-50">
                 <div className="text-center flex space-x-10">
-                    <BusinessCard
-                        title="Fitness Depot"
-                        desc="Get a hot gym workout here at Fitness Depot. Offering benefits for customers with over three months of membership."
-                    />
-                    <BusinessCard
-                        title="Fitness Depot"
-                        desc="Get a hot gym workout here at Fitness Depot. Offering benefits for customers with over three months of membership."
-                    />
-                    <BusinessCard
-                        title="Fitness Depot"
-                        desc="Get a hot gym workout here at Fitness Depot. Offering benefits for customers with over three months of membership."
-                    />
-                    <BusinessCard
-                        title="Fitness Depot"
-                        desc="Get a hot gym workout here at Fitness Depot. Offering benefits for customers with over three months of membership."
-                    />
+                    {accounts.map(account =>
+                        <BusinessCard
+                            title={account.name}
+                            desc={account.desc}
+                        />
+                    )}
                 </div>
             </div>
         </PageLayout>
