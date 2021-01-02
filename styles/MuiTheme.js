@@ -4,8 +4,7 @@ import {createMuiTheme} from "@material-ui/core/styles";
 const Theme = createMuiTheme({
     palette: {
         primary: {
-            500: '#8B5CF6',
-
+            500: '#000',
         }
     },
     typography: {

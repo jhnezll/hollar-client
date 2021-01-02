@@ -4,6 +4,7 @@ import TextInput from "../forms/TextInput";
 import {useRouter} from "next/router";
 import fb from "../../util/firebase-config";
 import {Button, createMuiTheme, MuiThemeProvider, TextField} from "@material-ui/core";
+import Theme from "../../styles/MuiTheme";
 
 export default function StepTwo({currentStep, onContinue, onBack, formData, setFormData}) {
     const {error, setError} = useState("")
@@ -17,23 +18,8 @@ export default function StepTwo({currentStep, onContinue, onBack, formData, setF
     //     }
     // }
 
-    const theme = createMuiTheme({
-        palette: {
-            primary: {
-                500: '#8B5CF6',
-
-            }
-        },
-        typography: {
-            button: {
-                textTransform: 'none',
-                flex: 'none'
-            }
-        }
-    })
-
     return (
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={Theme}>
             <form onSubmit={onContinue}>
                 <div className="space-y-4" autoComplete="off">
 
@@ -55,7 +41,7 @@ export default function StepTwo({currentStep, onContinue, onBack, formData, setF
                     })} value={formData.confirmPassword} error={error} required type="password"/>
 
                     <div>
-                        <h3 className="text-black inline-flex text-sm text-gray-600">By continuing, you agree to<h3 className="px-1 text-purple-500">Hollar's Terms and Conditions</h3></h3></div>
+                        <h3 className="text-black inline-flex text-sm text-gray-600">By continuing, you agree to<h3 className="px-1">Hollar's Terms and Conditions</h3></h3></div>
                 </div>
 
                 {/*Bottom of Forum*/}

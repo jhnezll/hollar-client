@@ -6,6 +6,7 @@ import fb from "../../util/firebase-config";
 import Head from "next/head";
 import {Button} from "@material-ui/core";
 import { useTheme, createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
+import Theme from "../../styles/MuiTheme";
 
 interface Props {
     children: ReactElement;
@@ -24,21 +25,6 @@ const RedirectHome = () => {
 
     return <></>
 }
-
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            500: '#8B5CF6',
-
-        }
-    },
-    typography: {
-        button: {
-            textTransform: 'none',
-            flex: 'none'
-        }
-    }
-})
 
 const PageLayout: React.FC<Props> = ({children, privateRoute, title, redirectPath}) => {
 
@@ -60,13 +46,13 @@ const PageLayout: React.FC<Props> = ({children, privateRoute, title, redirectPat
             </title>
         </Head>
         <div className="fixed w-full">
-            <div className="h-1 bg-gradient-to-r from-purple-400 to-purple-600"/>
+            <div className="h-1 bg-black"/>
             <div className="flex justify-between py-2.5 px-4 shadow-md items-center bg-white">
                 <a href="/"
                    className="flex justify-between items-center font-medium text-lg focus:underline truncate">
                     Hollar
                 </a>
-                <ThemeProvider theme={theme}>
+                <ThemeProvider theme={Theme}>
                 <div className="items-center">
                     {isAuthenticated
                     ?

@@ -1,8 +1,8 @@
-import TextInput from "../../components/forms/TextInput";
 import React, {useState} from "react";
-import Button from "../../components/forms/Button";
 import fb from "../../util/firebase-config";
 import {useRouter} from "next/router";
+import {MuiThemeProvider, TextField, Button} from "@material-ui/core";
+import Theme from "../../styles/MuiTheme";
 
 const Forgot = () => {
     const router = useRouter()
@@ -25,26 +25,21 @@ const Forgot = () => {
     }
 
     return <div className="flex justify-center items-center h-screen">
-        <div>
+        <MuiThemeProvider theme={Theme}>
             <div className="w-96 text-center rounded-lg border border-gray-200 p-8">
                 <form onSubmit={sendResetEmail} className="space-y-4">
                     <h1 className="text-4xl font-bold">Reset password</h1>
-                    <TextInput label="Email" id="email" required error={error.length > 0}
+                    <TextField className="w-full" variant="outlined" label="Email" id="email" required error={error.length > 0}
                                helperText={error}
                                disabled={loading}/>
-                    <div className="text-right pt-4">
+                    <div className="text-right pt-4 space-x-2">
                         <Button onClick={() => router.push('/auth/signin')}
-                                variant="light" className="mr-2" sizes="lg"
-                                color="primary">Log in</Button>
-                        <Button variant="filled" sizes="lg" color="primary" type="submit"
-                                disabled={loading} loading={loading}>Continue</Button>
+                                className="mr-2">Log in</Button>
+                        <Button disableElevation color="primary" variant="contained" type="submit" >Continue</Button>
                     </div>
                 </form>
             </div>
-            <div className="text-sm text-center mt-4">
-                🛠 Customize this page at <span className="inlineCode">/pages/auth/forgot.tsx</span>
-            </div>
-        </div>
+        </MuiThemeProvider>
     </div>
 
 }
