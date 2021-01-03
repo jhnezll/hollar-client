@@ -36,10 +36,10 @@ create customer loyalty.
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [🛠 Next.js](https://getbootstrap.com)
-* [🎨 Tailwind CSS](https://jquery.com)
-* [🔥 Firebase](https://laravel.com)
-* [📱 Expo] (https://expo.io)
+* [🛠 Next.js](https://nextjs.org)
+* [🎨 Tailwind CSS](https://tailwindcss.com)
+* [🔥 Firebase](https://firebase.google.com)
+* [📱 Expo](https://expo.io)
 
 <!-- GETTING STARTED -->
 ## Getting Started
