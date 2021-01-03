@@ -32,7 +32,7 @@ export default function Dashboard() {
                 <div className="text-center flex space-x-10">
                     {accounts.map(account =>
                         <BusinessCard
-                            title={account.name}
+                            title={account.businessName}
                             desc={account.desc}
                         />
                     )}
