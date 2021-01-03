@@ -56,7 +56,7 @@ As a client, you only need to register for an account to start receiving benefit
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/jhnezll/hollar) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/jhnezll/hollar-client/issues) for a list of proposed features (and known issues).
 
 <!-- LICENSE -->
 ## License
