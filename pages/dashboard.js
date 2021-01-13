@@ -33,7 +33,7 @@ export default function Dashboard() {
                     {accounts.map(account =>
                         <BusinessCard
                             title={account.businessName}
-                            desc={account.desc}
+                            desc={account.description}
                         />
                     )}
                 </div>

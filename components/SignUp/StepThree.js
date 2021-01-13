@@ -89,16 +89,6 @@ const StepThree = ({currentStep, onContinue, onBack, formData, setFormData}) => 
                 <div className="flex justify-between items-center mt-10">
                     <Steps step={currentStep + 1} totalSteps={3}/>
                     <div className="flex justify-between space-x-2">
-                        {/*<button type="button" onClick={onBack}*/}
-                        {/*        className="inline-flex items-center text-gray-700 px-4 py-2 border border-transparent text-base font-medium rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300">*/}
-                        {/*    Back*/}
-                        {/*</button>*/}
-                        {/*<button type="submit"*/}
-                        {/*        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium*/}
-                        {/*rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none*/}
-                        {/*focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">*/}
-                        {/*    Continue*/}
-                        {/*</button>*/}
                         <Button onClick={onBack}>Back</Button>
                         <Button type="submit" variant="contained" color="primary" disableElevation>Create Account</Button>
                     </div>
